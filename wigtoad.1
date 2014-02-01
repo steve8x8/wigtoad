@@ -21,9 +21,7 @@ downloading the (latest) cartridge version for the right device(s).
 .P
 Where multiple entries are possible (e.g. for device type, cartridge GUID,
 or input file), marked by \fB(MULTI)\fR below),
-they can be delimited by a pipe symbol (\fB|\fR) or a colon (\fB:\fR),
-or you can define your own delimiter(s).
-Make sure the pipe symbols are properly escaped from the command shell!
+they can be delimited by a colon (\fB:\fR).
 .P
 .B Important:
 To use this software, you must have agreed with the terms of service on wherigo.com
@@ -43,22 +41,26 @@ Multiple \fB-v\fR options raise the debug level, resulting in copious output.
 .TP
 \fB-u\fR|\fB--user\fR|\fB--username\fR \fIusername\fR
 geocaching.com/wherigo.com username (required)
+
+\fBCaveat\fR: Cartridges are "personalized" as they contain your username.
+The completion code is user-dependent as well.
 .TP
 \fB-p\fR|\fB--password\fR \fIpassword\fR
 geocaching.com/wherigo.com password (required)
 .TP
-\fB-m\fR|\fB--delimiter\fR \fIdelimiter(s)\fR
-delimiter(s) to be used for \fB(MULTI)\fR input, default "|:"
+\fB-t\fR|\fB--type\fR|\fB--devicetype\fR \fIdevicetype\fR
+\fB(MULTI)\fR
+device type(s) (known: \fIcolorado\fR, \fIpocketpc\fR, \fIoregon\fR, \fInuvi\fR;
+default: \fIpocketpc\fR) - \fIall\fR will be translated accordingly.
 
-The TUI uses "|".
-You may try "^" to avoid delimiters that have to be "escaped" ("quoted").
+There are no known differences between the three Garmin types \fIcolorado\fR,
+\fIoregon\fR, and \fInuvi\fR - despite the different capabilities of the devices.
+
+\fBCaveat\fR: \fIpocketpc\fR cartridges may contain media which can crash your Garmin device,
+but enhance the experience on smartphones etc.
 .TP
 \fB-o\fR|\fB--output\fR \fIpath\fR
 output file path (default: automatic)
-.TP
-\fB-t\fR|\fB--type\fR|\fB--devicetype\fR \fIdevicetype\fR
-\fB(MULTI)\fR
-device type(s) (known: colorado, pocketpc, oregon, nuvi; default: colorado)
 .TP
 \fB-F\fR|\fB--file\fR|\fB--fromFile\fR
 read cartridge GUIDs from file (see PARAMETERS below for details)
@@ -67,22 +69,24 @@ read cartridge GUIDs from file (see PARAMETERS below for details)
 do not overwrite existing files in file cache
 .TP
 \fB-O\fR|\fB--overwriteExisting\fR
-overwrite existing cartridge files (should not be necessary)
+overwrite existing cartridge files
+(this should not be necessary since version numbers are part of the name)
 .TP
 \fB-P\fR|\fB--proxy\fR \fIproxy\fR
 HTTP proxy server, http://username@password@host:port/
 .TP
 \fB-C\fR|\fB--clearCache\fR|\fB--cleanup\fR
 selectively clear browser cache
-.SH PARAMETERS \fB(MULTI)\fR
-You may list cartridge GUIDs as parameters, even prefixed with a
+.SH PARAMETERS
+\fB(MULTI)\fR
+You may list \fIcartridge GUIDs\fR as parameters, even prefixed with a
 (usually GC) code and an equal sign:
 .PP
-GC2PN9A=1b93d504-278a-4edf-b609-53497cac06dd
-will create output files GC2PN9A-....gwc
+\fIGC2PN9A=1b93d504-278a-4edf-b609-53497cac06dd\fR
+will create output files \fIGC2PN9A\fR-....gwc
 .PP
-1b93d504-278a-4edf-b609-53497cac06dd
-will use a hash of H6DGDBE to form H6DGDBE-....gwc filenames.
+\fI1b93d504-278a-4edf-b609-53497cac06dd\fR
+will use a hash of \fIH6DGDBE\fR to form \fIH6DGDBE\fR-....gwc filenames.
 .PP
 Of course you may list multiple entries, using a \fB:\fR delimiter.
 Input files have precedence over parameter arguments.

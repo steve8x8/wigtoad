@@ -1,0 +1,20 @@
+--- a/interface/input.rb	2012-09-25 13:01:26.000000000 +0200
++++ b/interface/input.rb	2012-09-25 17:01:48.000000000 +0200
+@@ -95,7 +95,7 @@
+   end
+ 
+   def usage
+-    puts "::: SYNTAX: wigtoad.rb [options] <search>"
++    puts "::: SYNTAX: wigtoad [options] <search>"
+     puts ""
+     puts " -v                     verbose output"
+     puts " -u <username>          wherigo.com username, required for coordinates"
+@@ -111,7 +111,7 @@
+     puts " -C                     selectively clear local browser cache"
+     puts ""
+     puts "::: EXAMPLES:"
+-    puts " wigtoad.rb -u helixblue -p password -t oregon:pocketpc GC54321=12345678-1234-1234-1234-1234567890abcdef"
++    puts " wigtoad -u helixblue -p password -t oregon:pocketpc GC54321=12345678-1234-1234-1234-1234567890abcdef"
+     puts "   find cartridge with given CGUID, assign to GC54321, get two device types"
+   end
+ 

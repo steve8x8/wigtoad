@@ -21,7 +21,9 @@ Encoding.default_external = Encoding::UTF_8
 $delimiters = /[\|:]/
 $delimiter = ':'
 
-$deviceTypes = { #20140116.3 -> need to get dynamically?
+$deviceTypes = {
+    # apparently there are only two return formats:
+    # "Windows PPC" (type 4) and "Garmin Colorado" (everything else)
     'colorado' => '3',
     'pocketpc' => '4',
     'oregon'   => '5',

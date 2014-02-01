@@ -97,19 +97,22 @@ class Input
   def usage
     puts "::: SYNTAX: wigtoad.rb [options] <search>"
     puts ""
-    puts " -u <username>          Geocaching.com username, required for coordinates"
-    puts " -p <password>          Geocaching.com password, required for coordinates"
+    puts " -v                     verbose output"
+    puts " -u <username>          wherigo.com username, required for coordinates"
+    puts " -p <password>          wherigo.com password, required for coordinates"
 
-    puts " -o [filename]          output file name (automatic otherwise)"
     puts " -t [devicetype]        device type to fetch cartridges for"
+    puts " -o [pathname]          output path (automatic otherwise)"
+    puts " -F [filename(s)]       read cartridge GUIDs from file(s)"
+
     puts " -Z                     don\'t overwrite existing cache descriptions"
     puts " -O                     overwrite existing cartridges"
     puts " -P                     HTTP proxy server, http://username:pass@host:port/"
     puts " -C                     selectively clear local browser cache"
     puts ""
     puts "::: EXAMPLES:"
-    puts " wigtoad.rb -u helixblue -p password -t all GC54321=12345678-1234-1234-1234-1234567890abcdef"
-    puts "   find cartridge with given CGUID, assign to GC54321, get all devices"
+    puts " wigtoad.rb -u helixblue -p password -t oregon:pocketpc GC54321=12345678-1234-1234-1234-1234567890abcdef"
+    puts "   find cartridge with given CGUID, assign to GC54321, get two device types"
   end
 
   def convertEscapedHex(string)
