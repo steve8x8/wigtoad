@@ -189,7 +189,7 @@ class WigToad
     # create hash of wherigos (key is "name"=wid)
     wherigos = Hash.new
     # parse list of cguids
-    @option['queryArg'].split($delimiters).each{ |arg|
+    @option['queryArg'].to_s.split($delimiters).each{ |arg|
       # ignore comments
       next if (arg =~ /^\#/)
       # ToDo: ignore more malformed input
@@ -348,6 +348,10 @@ wherigos.each_key{ |wid|
     puts ''
   end
 }
+end
+
+if wherigos.length == 0
+  displayError "No cartridges??"
 end
 
 displayBar

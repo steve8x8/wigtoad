@@ -73,20 +73,17 @@ class Input
     # put the stupid crap in a hash. Much nicer to deal with.
     begin
       @@optHash = Hash.new
+      @@optHash['queryArg'] = ''
       opts.each do |opt, arg|
         # verbose special treatment: sum up how often
         if (opt == '--verbose')
           @@optHash['verbose'] = @@optHash['verbose'].to_i + 1
-        elsif (opt == '--help')
-          usage
-          return {}
         else
           @@optHash[opt.gsub(/-/,'')] = arg
         end
       end
     rescue
       usage
-      return {}
     end
     # optional search arg(s)
     @@optHash['queryArg'] = ARGV.join($delimiter)
@@ -113,6 +110,8 @@ class Input
     puts "::: EXAMPLES:"
     puts " wigtoad.rb -u helixblue -p password -t oregon:pocketpc GC54321=12345678-1234-1234-1234-1234567890abcdef"
     puts "   find cartridge with given CGUID, assign to GC54321, get two device types"
+    puts ""
+    exit
   end
 
   def convertEscapedHex(string)
