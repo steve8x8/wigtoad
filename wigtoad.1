@@ -1,0 +1,134 @@
+.TH WIGTOAD 1
+.SH NAME
+wigtoad \- WherIGo download tool
+.SH SYNOPSIS
+.TP
+.B wigtoad \fI[options]\fR [\fI[cartridge]\fR]
+.SH NOTE
+If WigToad was not installed from a (distribution-specific) package
+(like .rpm for RedHat, OpenSuse, CentOS and derivatives; .deb for Debian
+and Ubuntu, etc.), it may be necessary to invoke WigToad with the
+.B .rb
+suffix, as in \fBwigtoad.rb\fR, \fB./wigtoad.rb\fR, \fBruby wigtoad.rb\fR
+or even \fBruby1.9.3 wigtoad.rb\fR
+(if the \fBruby\fR in your PATH is not the one you want to use).
+'
+'In a Windows environment, when not using the installer, create a desktop
+'link - using a terminal is highly recommended.
+.SH DESCRIPTION
+WigToad is software to help speed up the boring part of WherIGo'ing:
+downloading the (latest) cartridge version for the right device(s).
+.P
+Where multiple entries are possible (e.g. for device type, cartridge GUID,
+or input file), marked by \fB(MULTI)\fR below),
+they can be delimited by a pipe symbol (\fB|\fR) or a colon (\fB:\fR),
+or you can define your own delimiter(s).
+Make sure the pipe symbols are properly escaped from the command shell!
+.P
+.B Important:
+To use this software, you must have agreed with the terms of service on wherigo.com
+as you have to accept their EULA. WigToad will not do this for you!
+.SH OPTIONS
+Option keywords are case-sensitive, and may be separated from values by whitespace
+or an equal sign \fB=\fR.
+Options can be unambiguously abbreviated, for example, \fB--password\fR may be written
+as \fB--pas\fR (but not \fB--p\fR).
+.TP
+\fB-h\fR|\fB--help\fR
+get a short command-line option summary
+.TP
+\fB-v\fR|\fB--verbose\fR|\fB--debug\fR
+enable debugging output - very helpful in case of malfunctions.
+Multiple \fB-v\fR options raise the debug level, resulting in copious output.
+.TP
+\fB-u\fR|\fB--user\fR|\fB--username\fR \fIusername\fR
+geocaching.com/wherigo.com username (required)
+.TP
+\fB-p\fR|\fB--password\fR \fIpassword\fR
+geocaching.com/wherigo.com password (required)
+.TP
+\fB-m\fR|\fB--delimiter\fR \fIdelimiter(s)\fR
+delimiter(s) to be used for \fB(MULTI)\fR input, default "|:"
+
+The TUI uses "|".
+You may try "^" to avoid delimiters that have to be "escaped" ("quoted").
+.TP
+\fB-o\fR|\fB--output\fR \fIpath\fR
+output file path (default: automatic)
+.TP
+\fB-t\fR|\fB--type\fR|\fB--devicetype\fR \fIdevicetype\fR
+\fB(MULTI)\fR
+device type(s) (known: colorado, pocketpc, oregon, nuvi; default: colorado)
+.TP
+\fB-F\fR|\fB--file\fR|\fB--fromFile\fR
+read cartridge GUIDs from file (see PARAMETERS below for details)
+.TP
+\fB-Z\fR|\fB--preserveCache\fR|\fB--keepOld\fR
+do not overwrite existing files in file cache
+.TP
+\fB-O\fR|\fB--overwriteExisting\fR
+overwrite existing cartridge files (should not be necessary)
+.TP
+\fB-P\fR|\fB--proxy\fR \fIproxy\fR
+HTTP proxy server, http://username@password@host:port/
+.TP
+\fB-C\fR|\fB--clearCache\fR|\fB--cleanup\fR
+selectively clear browser cache
+.SH PARAMETERS \fB(MULTI)\fR
+You may list cartridge GUIDs as parameters, even prefixed with a
+(usually GC) code and an equal sign:
+.PP
+GC2PN9A=1b93d504-278a-4edf-b609-53497cac06dd
+will create output files GC2PN9A-....gwc
+.PP
+1b93d504-278a-4edf-b609-53497cac06dd
+will use a hash of H6DGDBE to form H6DGDBE-....gwc filenames.
+.PP
+Of course you may list multiple entries, using a \fB:\fR delimiter.
+Input files have precedence over parameter arguments.
+.SH SPECIAL CASES
+If
+.B user
+or
+.B owner
+names contain special (non-ASCII) characters, and you are using Windows,
+you may not be able to login or run a "user" query.
+In those cases, you'll have to pre-encode those characters.
+.B http://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024
+will help you to look up the proper UTF-8 codes.
+Prefix each two-digit hex value with a percent sign, for example:
+.B (capital_letter_O_with_diaeresis)lscheich
+will become
+.B %c3%96lscheich
+.SH ENVIRONMENT
+.TP
+.B WIG_DIR
+If set, WigToad will put its cache in this directory. If not the cache is
+placed in ~/.wigtoad/ . Note that it is not secure to set WIG_DIR to point
+to a world-writable directory such as /tmp.
+.TP
+.B LANG
+To properly handle special characters (which are not in the ASCII character
+set, such as umlauts, etc.) we recommend to set
+.B LANG
+to
+.B en_US.UTF-8
+or similar. The syntax depends on the shell you're using:
+ 
+.B setenv LANG en_US.UTF-8
+for C-shell derivatives (csh, tcsh)
+ 
+.B LANG=en_US.UTF-8; export LANG
+for Bourne and Korn shell (sh, ksh)
+ 
+.B export LANG=en_US.UTF-8
+for Bourne Again shell and derivatives (bash, dash)
+.SH EXAMPLES
+.TP
+(none yet)
+.TP
+.B  wigtoad -h
+lists supported options
+
+.SH AUTHOR
+Steve Sixty-Four, based on work of Thomas Stromberg and The GeoToad Project

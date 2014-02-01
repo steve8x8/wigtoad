@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	if [ ! -f ChangeLog.txt ] ; then echo '(empty)' > ChangeLog.txt ; fi
+	dh_installdirs usr/bin
+	install wigtoad.rb debian/wigtoad/usr/bin/wigtoad
+	dh_install interface lib usr/share/wigtoad

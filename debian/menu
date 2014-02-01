@@ -1,0 +1,2 @@
+?package(wigtoad):command="wigtoad" needs="text" section="Apps/Tools" \
+	title="WigToad"
