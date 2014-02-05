@@ -236,7 +236,7 @@ class WigToad
     # get form data
     if data =~ /_uxEulaAgree/m
       displayWarning "EULA must be accepted by hand"
-#      return nil
+      return nil
     end
     data.each_line do |line|
       case line
@@ -261,7 +261,8 @@ class WigToad
     @deviceTypes.each{ |deviceType|
       deviceTypeId = $deviceTypes[deviceType]
       displayInfo "... for device type \"#{deviceType}\" (#{deviceTypeId.inspect})"
-      fsname = wig['name'].gsub(/[\s\.\(\)-]+/, '_').gsub(/^_/, '').gsub(/_$/, '')
+      #fsname = wig['name'].gsub(/[\s\.\(\)-]+/, '_').gsub(/^_/, '').gsub(/_$/, '')
+      fsname = wig['name'].gsub(/\W+/, '_').gsub(/^_/, '').gsub(/_$/, '')
       filename = File.join(@option['output'], [wig['wid'], fsname, wig['version'], deviceType].join('-') + '.gwc')
       if File.exists?(filename)
         displayWarning "File #{filename} already exists!"
