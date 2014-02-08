@@ -21,4 +21,4 @@ x for each device, (shadow)fetch cartridge by version and output to wid-name-ver
     6 = Garmin nüvi 500 (?)
   but all cartridges are identical (except PPC)
 
-- Garmin Oregon can handle max. 25 cartridges?
+- Garmin Oregon can handle max. 25 cartridges? chokes on long filenames?

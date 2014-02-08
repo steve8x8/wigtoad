@@ -86,6 +86,14 @@ class Details
     # explicitly mark as "undone"
     wig['name'] = nil
     # extract some data from page
+    #                <!-- Begin Warning Wrapper -->
+    #            <h3>Warning</h3>
+    #
+    #            <ul><li>This cartridge is currently inactive, and will not appear in any search results.</li></ul>
+    #            <!-- End Warning Wrapper -->
+    if (data =~ /<ul><li>This cartridge is currently inactive/m)
+      wig['disabled'] = true
+    end
     # Latest Release:<br />
     # 5/24/2011<br />
     if (data =~ /Latest Release<br \/>\s*(\d+\/\d+\/\d+)<br \/>/m)
@@ -119,9 +127,10 @@ class Details
       }.compact.join(', ')
       wig['attribs'] = attribs
     end
-    # <h3>
-    #     Sir Harrisons Vermaechtnis&nbsp;</h3>
-    if (data =~ /<h3>\s*(.*?)\&nbsp;<\/h3>/m)
+    # <div class="detailsRight">
+    #     <h3>
+    #         Sir Harrisons Vermaechtnis&nbsp;</h3>
+    if (data =~ /<div class=.detailsRight.>\s*<h3>\s*(.*?)\&nbsp;<\/h3>/m)
       name = $1
       begin
         temp = CGI::unescapeHTML(name)

@@ -231,7 +231,7 @@ class WigToad
     debug downloadURL
     @postVars = {}
     page = ShadowFetch.new(downloadURL)
-    page.localExpiry = 1 * 86400 # about 1 week? device ids seem to change
+    page.localExpiry = 60 # 1 * 86400
     data = page.fetch
     # get form data
     if data =~ /_uxEulaAgree/m
@@ -318,10 +318,15 @@ if @option['file']
 end
 
 displayBar
+displayMessage "Parsing input"
+
 wherigos = cli.createWherigoList()
 wherigos.each_key{ |wid|
   debug "#{wherigos[wid].inspect}"
 }
+
+displayBar
+displayMessage "Collecting cartridge details"
 
 # for all entries in wherigos hash, download and parse cartridge details
 details = Details.new(wherigos)
