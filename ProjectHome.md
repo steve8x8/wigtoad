@@ -1,0 +1,1 @@
+GeoToad lacks support to download Wherigo cartridges. WigToad will download Wherigos.
