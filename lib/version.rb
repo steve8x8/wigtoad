@@ -4,7 +4,7 @@
 
 module WTVersion
 
-  MY_VERSION = '%VERSION%'
+  MY_VERSION = '0.1.0'
 
   def self.version
     if MY_VERSION !~ /^\d/

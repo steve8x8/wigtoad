@@ -1,5 +1,12 @@
+wigtoad (0.1.1-1) unstable; urgency=low
+
+  * Switch to HTTPS, TLSv1_2.
+
+ -- Steve Sixty-Four <steve8x8@googlemail.com>  Thu, 26 Dec 2019 20:00:00 +0000
+
 wigtoad (0.0.1-1) unstable; urgency=low
 
   * Getting the ball rolling.
 
- -- Steve Sixty-Four <steve8x8@gmail.com>  Thu, 20 Feb 2014 09:00:00 +0000
+ -- Steve Sixty-Four <steve8x8@googlemail.com>  Thu, 20 Feb 2014 09:00:00 +0000
+
