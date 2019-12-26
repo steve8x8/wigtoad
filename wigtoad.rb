@@ -296,7 +296,7 @@ exit if Object.const_defined?(:Ocra)
 # have some output before initializing the classes
 include Messages
 displayTitle "WigToad #{$VERSION} (Ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL}/#{RUBY_RELEASE_DATE} on #{RUBY_PLATFORM})"
-displayInfo "Report bugs or suggestions at http://code.google.com/p/wigtoad/issues/"
+displayInfo "Report bugs or suggestions at https://github.com/steve8x8/wigtoad/issues/"
 displayInfo "Please include verbose output (-v) without passwords in the bug report."
 displayBar
 cli = WigToad.new
