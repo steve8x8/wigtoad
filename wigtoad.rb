@@ -252,7 +252,7 @@ class WigToad
           if @postURL != /^\//
             @postURL = '/cartridge/' + @postURL
           end
-          @postURL = 'http://www.wherigo.com' + @postURL
+          @postURL = 'https://www.wherigo.com' + @postURL
         end
         debug "post URL is #{@postURL}"
       end

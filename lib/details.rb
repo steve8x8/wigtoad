@@ -12,7 +12,7 @@ class Details
   include Common
   include Messages
 
-  @@baseURL = "http://www.wherigo.com/cartridge/details.aspx"
+  @@baseURL = "https://www.wherigo.com/cartridge/details.aspx"
 
   def initialize(data)
     @wigHash = data

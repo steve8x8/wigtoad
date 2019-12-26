@@ -12,7 +12,7 @@ class Download
   include Common
   include Messages
 
-  @@baseURL = "http://www.wherigo.com/cartridge/download.aspx"
+  @@baseURL = "https://www.wherigo.com/cartridge/download.aspx"
 
   def initialize()
     @preserve = nil

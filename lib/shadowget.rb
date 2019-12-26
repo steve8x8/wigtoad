@@ -245,7 +245,7 @@ class ShadowFetch
   end
 
 
-  def fetchURL (url_str, redirects=2)  # full http:// string!
+  def fetchURL (url_str, redirects=2)  # full https:// string!
     #raise ArgumentError, 'HTTP redirect too deep' if redirects == 0
     if (redirects == 0)
       displayWarning "HTTP redirect loop for #{url_str}."
@@ -271,9 +271,9 @@ class ShadowFetch
       # reduce set of ciphers to the one that's known to work with 1.0.0h
       # http://gursevkalra.blogspot.de/2009/09/ruby-and-openssl-based-ssl-cipher.html
       http.ciphers = [ 'RC4-SHA', 'AES128-SHA', 'AES256-SHA', 'DES-CBC3-SHA' ]
-      # force ssl context to TLSv1/SSLv3
+      # force ssl context to TLSv1.2
       # http://www.ruby-forum.com/topic/200072
-      http.instance_eval { @ssl_context = OpenSSL::SSL::SSLContext.new(:TLSv1) }
+      http.instance_eval { @ssl_context = OpenSSL::SSL::SSLContext.new(:TLSv1_2) }
     end
 
     query = uri.path
