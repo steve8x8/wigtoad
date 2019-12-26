@@ -1,13 +1,13 @@
 Source: wigtoad
 Section: utils
 Priority: optional
-Maintainer: Steve Sixty-Four <steve8x8@gmail.com>
-Build-Depends: debhelper (>= 7)
+Maintainer: Steve Sixty-Four <steve8x8@googlemail.com>
+Build-Depends: debhelper (>= 9~)
 Standards-Version: 3.8.6
 
 Package: wigtoad
 Architecture: all
-Depends: ruby (>= 1.9.1) | ruby1.9.1 | ruby1.9.2 | ruby1.9.3, libopenssl-ruby, ${shlibs:Depends}, ${misc:Depends}
+Depends: ruby (>= 1.9.1), libruby | libopenssl-ruby
 Recommends: geotoad
 Description: wherigo download tool
  WigToad wants to help speed up the boring part of wherigos:
